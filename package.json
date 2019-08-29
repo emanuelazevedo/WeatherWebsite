@@ -1,0 +1,22 @@
+{
+  "name": "weatherwebsite",
+  "version": "1.0.0",
+  "description": "WeatherWebsite",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emanuelazevedo/WeatherWebsite.git"
+  },
+  "author": "Emanuel Azevedo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emanuelazevedo/WeatherWebsite/issues"
+  },
+  "homepage": "https://github.com/emanuelazevedo/WeatherWebsite#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
