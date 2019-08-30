@@ -1,6 +1,7 @@
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
+const axios = require('axios');
 
 const server = http.createServer((req, res) => {
     if(req.url === '/'){
@@ -14,13 +15,15 @@ const server = http.createServer((req, res) => {
         )
     }
 
-    if (req.url === '/api/users') {
-        const users = [
-        { name: 'Bob Smith', age: 40 },
-        { name: 'John Doe', age: 30 }
-        ];
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify(users));
+    if (req.url === '/api/weather') {
+        axios.get('https://api.weatherbit.io/v2.0/current?city=Aveiro&key=6accba4c460e4434ba36f3d1a5ac1031')
+            .then(res => {
+                console.log(res.data[0].city_name);
+                // console.log(res.data.explanation);
+            })
+            .catch(error => {
+                console.log("Error:" + error);
+            });
     }
 });
 
