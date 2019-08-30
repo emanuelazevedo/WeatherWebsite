@@ -18,7 +18,8 @@ const server = http.createServer((req, res) => {
     if (req.url === '/api/weather') {
         axios.get('https://api.weatherbit.io/v2.0/current?city=Aveiro&key=6accba4c460e4434ba36f3d1a5ac1031')
             .then(res => {
-                console.log(res.data[0].city_name);
+                const data = res.data.data;
+                console.log(data[0].city_name);
                 // console.log(res.data.explanation);
             })
             .catch(error => {
