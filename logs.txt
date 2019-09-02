@@ -6,3 +6,15 @@ Fri Aug 30 2019 19:27:37 GMT+0100 (WEST) - linux Searched for:
 Fri Aug 30 2019 19:34:44 GMT+0100 (WEST) - linux Searched for:
 Fri Aug 30 2019 19:36:18 GMT+0100 (WEST) - linux Searched for:
 Sat Aug 31 2019 00:00:21 GMT+0100 (WEST) - linux Searched for:
+Sat Aug 31 2019 22:36:08 GMT+0100 (WEST) - linux Searched for:
+Sat Aug 31 2019 22:36:26 GMT+0100 (WEST) - linux Searched for:
+Sat Aug 31 2019 22:39:59 GMT+0100 (WEST) - linux Searched for:
+Sat Aug 31 2019 22:40:30 GMT+0100 (WEST) - linux Searched for:
+Sat Aug 31 2019 22:40:48 GMT+0100 (WEST) - linux Searched for:
+Sat Aug 31 2019 22:41:24 GMT+0100 (WEST) - linux Searched for:
+Sat Aug 31 2019 22:41:48 GMT+0100 (WEST) - linux Searched for:
+Sat Aug 31 2019 22:44:32 GMT+0100 (WEST) - linux Searched for:undefinedAveiro Lisboa Porto 
+Sat Aug 31 2019 22:44:51 GMT+0100 (WEST) - linux Searched for:undefinedAveiro Lisboa Porto 
+Sat Aug 31 2019 22:45:09 GMT+0100 (WEST) - linux Searched for: Aveiro Lisboa Porto 
+Sat Aug 31 2019 22:46:46 GMT+0100 (WEST) - linux Searched for: Aveiro Lisboa Porto and got temperatures: 13 13 13 
+Sat Aug 31 2019 22:47:06 GMT+0100 (WEST) - linux Searched for: Aveiro Lisboa Porto and got temperatures: 13º 13º 13º 
