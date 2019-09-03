@@ -8,13 +8,10 @@ const request = require('request');
 //Chamada a API request
 const apiCallRequest = (callback, cities) => {
     
-    console.log('callback', cities)
     let teste = [];
     let size = cities.length;
     cities.forEach((city, index) => {
         
-        console.log('city', city)
-        console.log('index', index)
         request('https://api.weatherbit.io/v2.0/current?city='+city+'&key=6accba4c460e4434ba36f3d1a5ac1031', { json: true }, (err, res, body) => {
             if (err) {
                 return callback("Erro na chamada "+err);
@@ -27,20 +24,37 @@ const apiCallRequest = (callback, cities) => {
                 sunset: data[0].sunset,
                 temp: data[0].temp,
             }
-            console.log('dataResultCallback', dataResult)
-            // return callback(dataResult);
             teste.push(dataResult);
-            console.log('teste', teste)
 
+            console.log('index', index)
             //verifica se o array foi todo percorrido
             if((index+1)==size){
                 console.log('return', teste)
+                createLog(teste);
                 return callback(teste);
             }
             
         });
     }); 
     
+}
+
+//Ficheiro de logs(momento, plataforma e cidades)
+function createLog(data) {
+    let cities = " ";
+    let temperatures = " ";
+    console.log('data', data[0])
+    data.forEach(test => {
+        // console.log('data', test)
+        cities += test.city + " ";
+        temperatures += test.temp + "º ";
+    });
+
+    fs.appendFile('logs.txt',
+        new Date() + " - " + os.platform + " Searched for:" + cities + "and got temperatures:" + temperatures + "\n",
+        (err) => {
+            if (err) console.log("Error while creating log" + err);
+        });
 }
 
 const server = http.createServer((req, res) => {
@@ -79,24 +93,7 @@ const server = http.createServer((req, res) => {
         });
         
     
-        //Ficheiro de logs(momento, plataforma e cidades)
-        function createLog(data){
-            let cities = " ";
-            let temperatures = " ";
-            // console.log('data', data)
-            data.forEach(test => {
-                // console.log('data', test)
-                cities += test.city + " ";
-                temperatures += test.temp + "º ";
-            });
-
-            fs.appendFile('logs.txt', 
-            new Date() + " - " + os.platform + " Searched for:" + cities + "and got temperatures:"+ temperatures + "\n", 
-            (err) => {
-                if (err) throw "Erro aqui: " + err;
-                console.log("Error while creating log");
-            });
-        }
+        
         
     }
 });
