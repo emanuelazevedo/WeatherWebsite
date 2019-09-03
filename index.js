@@ -8,7 +8,7 @@ const request = require('request');
 //Chamada a API request
 const apiCallRequest = (callback, cities) => {
     
-    let teste = [];
+    const teste = [];
     let size = cities.length;
     cities.forEach((city, index) => {
         
@@ -25,10 +25,11 @@ const apiCallRequest = (callback, cities) => {
                 temp: data[0].temp,
             }
             teste.push(dataResult);
-
+            console.log('teste', teste)
             console.log('index', index)
             //verifica se o array foi todo percorrido
             if((index+1)==size){
+                // console.log('index', index)
                 console.log('return', teste)
                 createLog(teste);
                 return callback(teste);
