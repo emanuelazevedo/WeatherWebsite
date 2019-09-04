@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
     <title>Homepage</title>
 </head>
 <body>
@@ -22,6 +24,8 @@
                 </form>
 
             </div>
+            <div id="grafico"></div>
+            <div id="tabela"></div>
         </div>
     </div>
     
@@ -49,6 +53,54 @@
                 datatype: 'json',
                 success: function (result) {
                     console.log('result', result);
+                    result = JSON.parse(result);
+
+                    //Add chart
+                    $('#grafico').append('<canvas id="myChart" width="90%" height="20"></canvas>');
+
+                    var dataArray = [];
+                    for(i in result){
+                        dataArray.push(result[i].temp);
+                    }
+
+                    var lablesArray = [];
+                    for (i in result) {
+                        lablesArray.push(result[i].city);
+                    }
+
+                    var ctx = document.getElementById("myChart");
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: lablesArray,
+                            datasets: [{
+                                label: 'Temperatura das cidades pesquisadas',
+                                data: dataArray,
+                                
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+
+
+
+                    //Add table
+                    $('#tabela').append('<table><tr><th>Cidades</th><th>Temperatura</th><th>Aurora</th><th>Crespuculo</th></tr>');
+                    
+                    for (i in result) {
+                        $('#tabela').append('<tr><td>'+result[i].city+'</td><td>' + result[i].temp +'</td><td>' + result[i].sunrise +'</td><td>' + result[i].sunset +'</td></tr>');
+                    };
+                    
+                    $('#tabela').append('</table>');
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     console.log('err', "Aconteceu um erro");
