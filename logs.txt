@@ -40,3 +40,19 @@ Tue Sep 03 2019 12:13:37 GMT+0100 (WEST) - linux Searched for: Aveiro Lisbon and
 Tue Sep 03 2019 12:13:44 GMT+0100 (WEST) - linux Searched for: Aveiro Lisbon and got temperatures: 31.1º 26.1º 
 Tue Sep 03 2019 12:13:46 GMT+0100 (WEST) - linux Searched for: Aveiro Braga Lisbon and got temperatures: 31.1º 30.9º 26.1º 
 Tue Sep 03 2019 12:18:48 GMT+0100 (WEST) - linux Searched for: Aveiro Braga Lisbon and got temperatures: 31.1º 30.9º 26.1º 
+Wed Sep 04 2019 17:34:00 GMT+0100 (WEST) - linux Searched for: Lisbon and got temperatures: 32.2º 
+Wed Sep 04 2019 17:34:22 GMT+0100 (WEST) - linux Searched for: Porto Lisbon and got temperatures: 18.7º 32.2º 
+Wed Sep 04 2019 17:34:26 GMT+0100 (WEST) - linux Searched for: Aveiro Porto Lisbon and got temperatures: 22.6º 18.7º 32.2º 
+Wed Sep 04 2019 18:00:04 GMT+0100 (WEST) - linux Searched for: Lisbon and got temperatures: 32.2º 
+Wed Sep 04 2019 18:04:05 GMT+0100 (WEST) - linux Searched for: Porto Aveiro Lisbon and got temperatures: 18.7º 22.6º 32.2º 
+Wed Sep 04 2019 18:04:13 GMT+0100 (WEST) - linux Searched for: Lisbon and got temperatures: 32.2º 
+Wed Sep 04 2019 18:05:59 GMT+0100 (WEST) - linux Searched for: Lisbon and got temperatures: 32.2º 
+Wed Sep 04 2019 18:09:52 GMT+0100 (WEST) - linux Searched for: Aveiro Lisbon and got temperatures: 22.8º 31.7º 
+Wed Sep 04 2019 18:10:09 GMT+0100 (WEST) - linux Searched for: Aveiro Lisbon and got temperatures: 22.8º 31.7º 
+Wed Sep 04 2019 18:10:16 GMT+0100 (WEST) - linux Searched for: Lisbon and got temperatures: 31.7º 
+Wed Sep 04 2019 18:11:37 GMT+0100 (WEST) - linux Searched for: Porto Aveiro Lisbon and got temperatures: 17.5º 22.8º 31.7º 
+Wed Sep 04 2019 18:12:14 GMT+0100 (WEST) - linux Searched for: Aveiro Porto Lisbon and got temperatures: 22.8º 17.5º 31.7º 
+Wed Sep 04 2019 18:17:55 GMT+0100 (WEST) - linux Searched for: Porto Lisbon and got temperatures: 17.5º 31.7º 
+Wed Sep 04 2019 18:18:04 GMT+0100 (WEST) - linux Searched for: Porto Lisbon and got temperatures: 17.5º 31.7º 
+Wed Sep 04 2019 18:35:40 GMT+0100 (WEST) - linux Searched for: Aveiro Porto Lisbon and got temperatures: 22.8º 17.5º 31.7º 
+Wed Sep 04 2019 18:36:51 GMT+0100 (WEST) - linux Searched for: Porto Aveiro Lisbon and got temperatures: 17.5º 22.8º 31.7º 

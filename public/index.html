@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Homepage</title>
 </head>
 <body>
@@ -14,29 +15,46 @@
         <div class="row">
             <div class="col-md-2">Introduzir até 3 cidades</div>
             <div class="col-md-offset-2 col-md-7">
-                <form action="/api/weather" method="post">
-                    <input type="text" id="city" />
-                    <input type="submit" value="Pesquisar"/>
-                </form>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-10">
-                <!-- GRAFICO -->
-            </div>
-            <div class="col-md-10">
-                <!-- TABELA -->
-                <table>
-                    <th>Cidades</th>
-                    <td>Temperatura</td>
-                    <td>Aurora</td>
-                    <td>Crespuculo</td>
-                </table>
+                <form id="form-search">
+                    <input type="text" name="city" id="city" />
+                    <button>Create/POST</button>
+                </form>
+
             </div>
         </div>
     </div>
     
 
 </body>
+
+<script type="text/javascript">
+    $('#form-search').on('submit', function (event) {
+        event.preventDefault();
+
+        var city = $('#city');
+        console.log('city', city.val())
+        var data = city.val();
+        var dataArray = data.split("; ");
+        console.log('data', dataArray)
+        AjaxCall(dataArray);
+    })
+    function AjaxCall(data) {
+        $.ajax(
+            {
+                method: 'post',
+                // contentType: 'application/json',
+                url: '/api/weather',
+                data: JSON.stringify({ "city": data }),
+                datatype: 'json',
+                success: function (result) {
+                    console.log('result', result);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log('err', "Aconteceu um erro");
+                }
+            })
+
+    }
+</script>
 </html>

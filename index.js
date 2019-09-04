@@ -70,6 +70,17 @@ const server = http.createServer((req, res) => {
         )
     }
 
+    if (req.url === '/weather') {
+        fs.readFile(
+            path.join(__dirname, 'public', 'weather.html'),
+            (err, content) => {
+                if (err) throw "Erro na pagina web: " + err;
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(content);
+            }
+        )
+    }
+
     if (req.url === '/api/weather' && req.method === 'POST') {
 
         let body = '';
