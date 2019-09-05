@@ -1,7 +1,6 @@
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
-const axios = require('axios');
 const os = require('os');
 const request = require('request');
 
