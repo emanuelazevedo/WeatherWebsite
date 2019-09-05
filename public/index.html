@@ -8,15 +8,67 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
     <title>Homepage</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <style>
+    .alert {
+        padding: 20px;
+        background-color: #f44336; /* Red */
+        color: white;
+        margin-bottom: 15px;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-radius: 50px;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: blue;
+        color: white; 
+    }
+
+    .header {
+        background-color: blue;
+        color: white; 
+        padding-bottom: 30px;
+        padding-top: 20px;
+    }
+
+    .form-row {
+        padding-top: 15px;
+        padding-bottom: 5px;
+        font-size: 18px;
+    }
+
+    </style>
+
+
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row">
-            <h1>Site para ver a meteorologia</h1>
+        <div class="row header">
+            <center>
+                <div class="col-md-offset-3 col-md-6">
+                    <h1>Site para ver a meteorologia</h1>
+                </div>
+            </center>
         </div>
-        <div class="row">
-            <div class="col-md-2">Introduzir até 3 cidades separadas com um ponto e vírgula(;)</div>
-            <div class="col-md-offset-2 col-md-7">
+        <div class="row form-row">
+            <center>
+            <div class="col-md-offset-3 col-md-6">Introduzir até 3 cidades separadas com um ponto e vírgula(;)</div>
+            <div class="col-md-offset-3 col-md-6">
 
                 <form id="form-search">
                     <input type="text" name="city" id="city" />
@@ -24,8 +76,11 @@
                 </form>
 
             </div>
-            <div id="grafico"></div>
-            <div id="tabela"></div>
+            <div class="col-md-offset-3 col-md-6" id="errorMsg"></div>
+            <div class="row"><div class="col-md-offset-4 col-md-4" id="grafico"></div></div>
+            
+            <div class="row"><div class="col-md-offset-3 col-md-6" id="tabela"></div></div>
+            </center>
         </div>
     </div>
     
@@ -41,7 +96,23 @@
         var data = city.val();
         var dataArray = data.split(";");
         console.log('data', dataArray)
-        AjaxCall(dataArray);
+
+        if(dataArray.length > 3){
+
+            console.log('tooBig')
+            $('#errorMsg').empty();
+            $('#errorMsg').append("<br>Inseriu mais do que 3 cidades. Por favor insira apenas 3");
+            $('#errorMsg').addClass('alert');
+            setTimeout(function () {
+                $('#errorMsg').empty();
+                $('#errorMsg').removeClass('alert');
+            }, 5000);
+
+        } else{
+
+            AjaxCall(dataArray);
+
+        }
     })
 
 
@@ -60,7 +131,7 @@
                     result = JSON.parse(result);
 
                     //Add chart
-                    $('#grafico').append('<canvas id="myChart" width="90%" height="20"></canvas>');
+                    $('#grafico').append('<canvas id="myChart" width="90%" height="50"></canvas>');
 
                     var dataArray = [];
                     for(i in result){
@@ -101,7 +172,7 @@
                     $('#tabela').append('<table id="tableCities"><tr><th onclick="sortTable(0)">Cidades</th><th onclick="sortTable(1)">Temperatura</th><th onclick="sortTable(2)">Aurora</th><th onclick="sortTable(3)">Crespuculo</th></tr>');
                     
                     for (i in result) {
-                        $('#tabela').find('tbody').append('<tr><td>'+result[i].city+'</td><td>' + result[i].temp +'</td><td>' + result[i].sunrise +'</td><td>' + result[i].sunset +'</td></tr>');
+                        $('#tabela').find('tbody').append('<tr><td>'+result[i].city+'</td><td>' + result[i].temp +'ºC</td><td>' + result[i].sunrise +'</td><td>' + result[i].sunset +'</td></tr>');
                     };
                     
                     $('#tabela').append('</table>');

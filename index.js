@@ -8,7 +8,7 @@ const request = require('request');
 //Chamada a API request
 const apiCallRequest = (callback, cities) => {
     
-    const teste = [];
+    const dataReturn = [];
     let size = cities.length;
     cities.forEach((city, index) => {
         
@@ -16,6 +16,8 @@ const apiCallRequest = (callback, cities) => {
             if (err) {
                 return callback("Erro na chamada "+err);
             }
+            
+            
             const data = body.data;
 
             dataResult = {
@@ -24,15 +26,15 @@ const apiCallRequest = (callback, cities) => {
                 sunset: data[0].sunset,
                 temp: data[0].temp,
             }
-            teste.push(dataResult);
-            console.log('teste', teste)
+            dataReturn.push(dataResult);
+            console.log('teste', dataReturn)
             console.log('index', index)
             //verifica se o array foi todo percorrido
             if((index+1)==size){
                 // console.log('index', index)
-                console.log('return', teste)
-                createLog(teste);
-                return callback(teste);
+                console.log('return', dataReturn)
+                createLog(dataReturn);
+                return callback(dataReturn);
             }
             
         });
@@ -41,7 +43,7 @@ const apiCallRequest = (callback, cities) => {
 }
 
 //Ficheiro de logs(momento, plataforma e cidades)
-function createLog(data) {
+const createLog = (data) => {
     let cities = " ";
     let temperatures = " ";
     console.log('data', data[0])
@@ -59,6 +61,7 @@ function createLog(data) {
 }
 
 const server = http.createServer((req, res) => {
+    //pagina web
     if(req.url === '/'){
         fs.readFile(
             path.join(__dirname, 'public', 'index.html'),
@@ -70,17 +73,8 @@ const server = http.createServer((req, res) => {
         )
     }
 
-    if (req.url === '/weather') {
-        fs.readFile(
-            path.join(__dirname, 'public', 'weather.html'),
-            (err, content) => {
-                if (err) throw "Erro na pagina web: " + err;
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(content);
-            }
-        )
-    }
 
+    //link para a api
     if (req.url === '/api/weather' && req.method === 'POST') {
 
         let body = '';
